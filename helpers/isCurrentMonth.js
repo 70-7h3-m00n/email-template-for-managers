@@ -16,8 +16,20 @@ const isCurrentMonth = month => {
 
   const currentMonth = new Date().getMonth()
 
-  if (month.toLowerCase() === ruMonths[currentMonth].toLowerCase()) return true
-  if (month.toLowerCase() !== ruMonths[currentMonth].toLowerCase()) return false
+  if (
+    month &&
+    ruMonths &&
+    ruMonths[currentMonth] &&
+    month.toLowerCase() === ruMonths[currentMonth].toLowerCase()
+  )
+    return true
+  if (
+    month &&
+    ruMonths &&
+    ruMonths[currentMonth] &&
+    month.toLowerCase() !== ruMonths[currentMonth].toLowerCase()
+  )
+    return false
 }
 
 export default isCurrentMonth

@@ -16,7 +16,11 @@ const getCurrentMonthNum = month => {
 
   let output
   ruMonths.forEach(
-    (item, idx) => item.toLowerCase() === month.toLowerCase() && (output = idx)
+    (item, idx) =>
+      item &&
+      month &&
+      item.toLowerCase() === month.toLowerCase() &&
+      (output = idx)
   )
 
   return output

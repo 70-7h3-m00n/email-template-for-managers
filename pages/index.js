@@ -27,7 +27,10 @@ const Home = ({ data }) => {
   const dataLastSixMonths = data.filter(item => {
     let include = false
     lastSixMonths.forEach(month => {
-      month.toLowerCase() === item.month.toLowerCase() && (include = true)
+      month &&
+        month.toLowerCase() === item &&
+        item.month.toLowerCase() &&
+        (include = true)
     })
     if (include) return item
   })
@@ -43,7 +46,9 @@ const Home = ({ data }) => {
 
     let include = false
     months.forEach(month => {
-      month.toLowerCase() === item.month.toLowerCase() && (include = true)
+      if (month && item && item.month) {
+        month.toLowerCase() === item.month.toLowerCase() && (include = true)
+      }
     })
     if (include) return item
   })
@@ -53,7 +58,9 @@ const Home = ({ data }) => {
 
     let include = false
     months.forEach(month => {
-      month.toLowerCase() === item.month.toLowerCase() && (include = true)
+      if (month && item && item.month) {
+        month.toLowerCase() === item.month.toLowerCase() && (include = true)
+      }
     })
     if (include) return item
   })
@@ -82,6 +89,8 @@ const Home = ({ data }) => {
 
 export async function getStaticProps(context) {
   const data = await fetchNotionData()
+
+  console.log(data)
 
   return {
     props: {

@@ -11,7 +11,7 @@ const getBestManagerResult = data => {
   ).name
 
   const result = data.reduce((acc, cur) => {
-    if (cur.name.toLowerCase() === name.toLowerCase()) {
+    if (cur && cur.name && cur.name.toLowerCase() === name.toLowerCase()) {
       acc += cur.result
     }
     return acc
